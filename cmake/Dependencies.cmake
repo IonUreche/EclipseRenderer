@@ -26,7 +26,7 @@ FetchContent_MakeAvailable(glm)
 FetchContent_Declare(
     imgui
     GIT_REPOSITORY https://github.com/ocornut/imgui.git
-    GIT_TAG        v1.91.9
+    GIT_TAG        v1.92.8
     GIT_SHALLOW    TRUE
 )
 FetchContent_MakeAvailable(imgui)
@@ -35,7 +35,7 @@ FetchContent_MakeAvailable(imgui)
 file(GLOB IMGUI_SOURCES
     ${imgui_SOURCE_DIR}/*.cpp
     ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
-    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_vulkan.cpp
 )
 
 add_library(imgui STATIC ${IMGUI_SOURCES})
@@ -46,3 +46,6 @@ target_include_directories(imgui PUBLIC
 )
 
 target_link_libraries(imgui PUBLIC glfw)
+
+find_package(Vulkan REQUIRED)
+target_link_libraries(imgui PRIVATE Vulkan::Vulkan)

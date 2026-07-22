@@ -105,8 +105,12 @@ void Window::Update()
 //======================================================================================
 void Window::KeyCallback(int key, int scancode, int action, int mods)
 {
-	//if (action == GLFW_PRESS)
-	//{
+	if (action == GLFW_PRESS)
+	{
+		if (key == GLFW_KEY_ESCAPE)
+		{
+			glfwSetWindowShouldClose(m_glfwWindow, GLFW_TRUE);
+		}
 	//	if (key == GLFW_KEY_W)
 	//	{
 	//		m_moveDirMask |= utils::MoveDirectionMasks::k_forward;
@@ -135,7 +139,7 @@ void Window::KeyCallback(int key, int scancode, int action, int mods)
 	//	{
 	//		//m_camera->SetFastSpeedMode(true);
 	//	}
-	//}
+	}
 //
 	//if (action == GLFW_RELEASE)
 	//{

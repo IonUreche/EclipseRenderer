@@ -51,6 +51,7 @@ private:
 
     bool m_mouseLeftPressed = false;
     bool m_mouseRightPressed = false;
+    bool m_closeApp = false;
 };
 
 #endif //ECLIPSERENDERER_WINDOW_H
